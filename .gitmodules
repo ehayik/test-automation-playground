@@ -1,0 +1,3 @@
+[submodule "libs/playground-parent"]
+	path = libs/playground-parent
+	url = https://github.com/eljaiek/playground-parent.git
