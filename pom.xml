@@ -12,6 +12,7 @@
         <module>test-automation-dependencies</module>
         <module>test-automation-parent</module>
         <module>selenium-playground</module>
+        <module>guice-playground</module>
     </modules>
 
     <properties>
