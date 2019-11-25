@@ -1,26 +1,21 @@
 package com.github.eljaiek.playgroud.selenium;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
+
+import javax.inject.Inject;
 
 import static org.testng.Assert.assertEquals;
 
 @Slf4j
+@Guice(modules = WebDriverModule.class)
 public class MarionetteFirstTest {
 
+    @Inject
     private WebDriver driver;
-
-    @BeforeClass
-    public void initialize() {
-      //  Enviroment.initialize();
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-    }
 
     @AfterClass
     public void teardownTest () {
