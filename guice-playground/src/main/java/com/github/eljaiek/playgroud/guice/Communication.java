@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 @Slf4j
@@ -22,6 +23,11 @@ public class Communication {
             log.info("Message logging enabled");
         }
 
+    }
+
+    @PreDestroy
+    public void close() {
+        log.info("Communication is closed");
     }
 
     public boolean sendMessage(String message) {

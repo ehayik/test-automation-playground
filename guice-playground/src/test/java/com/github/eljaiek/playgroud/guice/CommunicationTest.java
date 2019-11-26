@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 
-@Guice(modules = BasicModule.class)
+@Guice(modules = CommModule.class)
 public class CommunicationTest {
 
     @Inject
