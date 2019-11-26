@@ -3,6 +3,7 @@ package com.github.eljaiek.playgroud.guice;
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 import com.google.inject.matcher.Matchers;
+import org.slf4j.LoggerFactory;
 import ru.vyarus.guice.ext.ExtAnnotationsModule;
 
 class BasicModule extends AbstractModule {
@@ -17,8 +18,7 @@ class BasicModule extends AbstractModule {
         bindInterceptor(
                 Matchers.any(),
                 Matchers.annotatedWith(MessageSentLoggable.class),
-                new MessageLogger()
+                new MessageLogger(LoggerFactory.getLogger(MessageLogger.class))
         );
-
     }
 }

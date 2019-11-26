@@ -1,12 +1,17 @@
 package com.github.eljaiek.playgroud.guice;
 
-import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.slf4j.Logger;
 
-@Slf4j
 public class MessageLogger implements MethodInterceptor {
- 
+
+    private final Logger log;
+
+    public MessageLogger(Logger log) {
+        this.log = log;
+    }
+
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Object[] objectArray = invocation.getArguments();
