@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import static org.testng.Assert.assertEquals;
 
 @Slf4j
-@Guice(modules = WebDriverModule.class)
+@Guice(modules = MarionetteModule.class)
 public class MarionetteFirstTest {
 
     @Inject
