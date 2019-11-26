@@ -1,17 +1,14 @@
 package com.github.eljaiek.playgroud.guice;
 
-import org.slf4j.Logger;
-import ru.vyarus.guice.ext.log.Log;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 class DefaultCommunicatorImpl implements Communicator {
 
-    @Log
-    private Logger logger;
-
     @Override
-    @MessageSentLoggable
+    @LogMessage
     public boolean sendMessage(String message) {
-        logger.info("SMS message sent");
+        log.info("SMS message sent");
         return true;
     }
 }

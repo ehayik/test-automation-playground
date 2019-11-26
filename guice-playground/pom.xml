@@ -15,14 +15,10 @@
     <artifactId>guice-playground</artifactId>
 
     <dependencies>
+        <!--DI-->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>ru.vyarus</groupId>
-            <artifactId>guice-ext-annotations</artifactId>
         </dependency>
 
         <dependency>
@@ -35,6 +31,7 @@
             <artifactId>javassist</artifactId>
         </dependency>
 
+        <!--testing -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

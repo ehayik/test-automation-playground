@@ -1,12 +1,12 @@
 package com.github.eljaiek.playgroud.guice;
 
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import ru.vyarus.guice.ext.log.Log;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+@Slf4j
 @RequiredArgsConstructor
 public class Communication {
 
@@ -15,16 +15,17 @@ public class Communication {
     @Inject
     private Communicator communicator;
 
-    @Log
-    private Logger log;
-
     @PostConstruct
     public void init() {
-    //    log.info("Message logging enabled");
+
+        if (keepRecords) {
+            log.info("Message logging enabled");
+        }
+
     }
-  
+
     public boolean sendMessage(String message) {
         return communicator.sendMessage(message);
     }
- 
+
 }
