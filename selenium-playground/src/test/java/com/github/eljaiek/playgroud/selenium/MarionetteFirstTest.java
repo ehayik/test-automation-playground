@@ -1,6 +1,7 @@
 package com.github.eljaiek.playgroud.selenium;
 
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Guice;
@@ -26,7 +27,7 @@ public class MarionetteFirstTest {
     public void checkTitleTest() {
         driver.navigate().to("http://www.swtestacademy.com/");
         driver.manage().window().maximize();
-        var title = driver.getTitle();
+        val title = driver.getTitle();
         log.info("Page Title: {}", title);
         assertEquals(title, "Software Test Academy", "Title assertion is failed!");
     }
