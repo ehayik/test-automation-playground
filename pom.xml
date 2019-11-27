@@ -13,11 +13,13 @@
         <module>test-automation-parent</module>
         <module>selenium-playground</module>
         <module>guice-playground</module>
+        <module>aspectj-playground</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>1.0.0.M1</revision>
+        <aspectj.version>1.9.4</aspectj.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
@@ -48,10 +50,39 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
         </plugins>
 
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                    <configuration>
+                        <argLine>
+                            -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
+                        </argLine>
+                        <useSystemClassLoader>true</useSystemClassLoader>
+                        <reuseForks>true</reuseForks>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjweaver</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -61,6 +92,66 @@
                         <target>${java.version}</target>
                         <useIncrementalCompilation>false</useIncrementalCompilation>
                     </configuration>
+                </plugin>
+
+                <!--this aspectj-maven-plugin version is compatible with Java 9+-->
+                <!--this setup is compatible with annotation processors such as Lombok -->
+                <plugin>
+                    <groupId>com.github.m50d</groupId>
+                    <artifactId>aspectj-maven-plugin</artifactId>
+                    <version>1.11.1</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <complianceLevel>${java.version}</complianceLevel>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <verbose>true</verbose>
+                        <Xlint>ignore</Xlint>
+                        <showWeaveInfo>true</showWeaveInfo>
+                        <forceAjcCompile>true</forceAjcCompile>
+                        <sources/>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>default-compile</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <!-- use this goal to weave all your main classes -->
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <weaveDirectories>
+                                    <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+                                </weaveDirectories>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <phase>process-test-classes</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                            <configuration>
+                                <weaveDirectories>
+                                    <weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>
+                                </weaveDirectories>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjtools</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjweaver</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>

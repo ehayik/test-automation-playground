@@ -21,6 +21,7 @@
         <mockito.version>3.1.0</mockito.version>
         <bytebuddy.version>1.9.7</bytebuddy.version>
         <powermock.version>2.0.2</powermock.version>
+        <aspectj.version>1.9.4</aspectj.version>
     </properties>
 
     <dependencyManagement>
@@ -181,6 +182,13 @@
                 <artifactId>javassist</artifactId>
                 <version>3.25.0-GA</version>
                 <scope>compile</scope>
+            </dependency>
+
+            <!--aop-->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
