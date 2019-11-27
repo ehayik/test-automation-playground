@@ -8,7 +8,8 @@
     <parent>
         <artifactId>test-automation-playground</artifactId>
         <groupId>com.github.eljaiek.playgroud</groupId>
-        <version>${revision}</version>
+        <!--parent version must be specified manually due to an issue with flatten-maven-plugin-->
+        <version>1.0.0.M1</version>
     </parent>
 
     <artifactId>test-automation-dependencies</artifactId>
