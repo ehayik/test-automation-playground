@@ -4,8 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 class DefaultCommunicatorImpl implements Communicator {
+
     public DefaultCommunicatorImpl() {
-        log.info("CREATED");
+        log.info("Communicator is up and running");
     }
 
     @Override
