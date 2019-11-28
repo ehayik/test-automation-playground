@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.autopilot.testng;
 
 import com.google.inject.Module;
 
@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface GovernatorTest {
+public @interface AutopilotTest {
 
     Class<? extends Module>[] modules();
 }

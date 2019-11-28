@@ -1,11 +1,12 @@
 package com.github.eljaiek.playgroud.guice;
 
+import com.github.eljaiek.autopilot.testng.AutopilotTest;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 
-@GovernatorTest(modules = CommModule.class)
+@AutopilotTest(modules = CommModule.class)
 public class CommunicationTest {
 
     @Inject

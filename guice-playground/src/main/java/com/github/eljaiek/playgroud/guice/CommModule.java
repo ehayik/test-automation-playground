@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 import com.google.inject.matcher.Matchers;
 
-class CommModule extends AbstractModule {
+public class CommModule extends AbstractModule {
 
     @Override
     protected void configure() {

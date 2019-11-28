@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.autopilot.testng;
 
 import com.google.inject.Injector;
 import com.google.inject.Module;
@@ -11,7 +11,7 @@ import org.testng.ISuiteListener;
 import org.testng.TestNGException;
 import org.testng.internal.ClassHelper;
 
-public class GovernatorInjectorSuiteListener implements ISuiteListener {
+public class AutopilotSuiteListener implements ISuiteListener {
 
     private Injector injector;
     private LifecycleManager lifecycleManager;
@@ -42,7 +42,7 @@ public class GovernatorInjectorSuiteListener implements ISuiteListener {
 
         if (parentModule != null) {
             injector = LifecycleInjector.builder()
-                    .withModules(new CommModule())
+                    .withModules(parentModule)
                     .build()
                     .createInjector();
         } else {

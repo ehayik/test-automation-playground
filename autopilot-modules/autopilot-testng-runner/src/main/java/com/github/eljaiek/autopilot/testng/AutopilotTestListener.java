@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.autopilot.testng;
 
 import com.google.inject.Module;
 import lombok.SneakyThrows;
@@ -11,23 +11,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class GovernatorTestInjectionListener implements ITestListener {
+public class AutopilotTestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
         var injector = result.getTestContext().getSuite().getParentInjector();
         val testCase = result.getInstance();
-        val governatorTest = testCase.getClass().getAnnotation(GovernatorTest.class);
+        val autopilotTest = testCase.getClass().getAnnotation(AutopilotTest.class);
 
-        if (governatorTest != null) {
-            injector = injector.createChildInjector(loadModulesFor(governatorTest));
+        if (autopilotTest != null) {
+            injector = injector.createChildInjector(loadModulesFor(autopilotTest));
         }
 
         injector.injectMembers(result.getInstance());
     }
 
     @SneakyThrows
-    private List<Module> loadModulesFor(GovernatorTest test) {
+    private List<Module> loadModulesFor(AutopilotTest test) {
         return Stream.of(test.modules()).map(cl -> {
             try {
                 return cl.getDeclaredConstructor().newInstance();
