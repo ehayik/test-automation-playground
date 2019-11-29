@@ -68,8 +68,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.2</version>
                     <configuration>
+                        <!--setup AspectJ load-time weaving-->
                         <argLine>
-                            -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
+                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
                         <useSystemClassLoader>true</useSystemClassLoader>
                         <reuseForks>true</reuseForks>
