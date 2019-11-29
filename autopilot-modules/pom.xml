@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>autopilot-core</module>
         <module>autopilot-testng-runner</module>
     </modules>
 </project>

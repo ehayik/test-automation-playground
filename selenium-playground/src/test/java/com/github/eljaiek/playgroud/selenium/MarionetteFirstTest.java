@@ -1,10 +1,10 @@
 package com.github.eljaiek.playgroud.selenium;
 
+import com.github.eljaiek.autopilot.testng.AutopilotTest;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import static org.testng.Assert.assertEquals;
 
 @Slf4j
-@Guice(modules = MarionetteModule.class)
+@AutopilotTest(modules = MarionetteModule.class)
 public class MarionetteFirstTest {
 
     @Inject

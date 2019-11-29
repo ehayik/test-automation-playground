@@ -2,6 +2,8 @@ package com.github.eljaiek.autopilot.testng;
 
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import com.netflix.governator.configuration.PropertiesConfigurationProvider;
+import com.netflix.governator.guice.BootstrapModule;
 import com.netflix.governator.guice.LifecycleInjector;
 import com.netflix.governator.lifecycle.LifecycleManager;
 import lombok.SneakyThrows;
@@ -10,6 +12,8 @@ import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.TestNGException;
 import org.testng.internal.ClassHelper;
+
+import java.util.Properties;
 
 public class AutopilotSuiteListener implements ISuiteListener {
 
@@ -42,17 +46,27 @@ public class AutopilotSuiteListener implements ISuiteListener {
 
         if (parentModule != null) {
             injector = LifecycleInjector.builder()
+                    .withBootstrapModule(getBootstrapModule())
                     .withModules(parentModule)
                     .build()
                     .createInjector();
         } else {
             injector = LifecycleInjector.builder()
+                    .withBootstrapModule(getBootstrapModule())
                     .build()
                     .createInjector();
         }
 
         lifecycleManager = injector.getInstance(LifecycleManager.class);
         lifecycleManager.start();
+    }
+
+    @SneakyThrows
+    private BootstrapModule getBootstrapModule() {
+        val props = new Properties();
+        props.load(AutopilotSuiteListener.class.getResourceAsStream("/environment.properties"));
+        val configProvider = new PropertiesConfigurationProvider(props);
+        return binder -> binder.bindConfigurationProvider().toInstance(configProvider);
     }
 
     @Override
