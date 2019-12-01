@@ -7,6 +7,7 @@ import com.netflix.governator.guice.BootstrapModule;
 import com.netflix.governator.guice.LifecycleInjector;
 import com.netflix.governator.lifecycle.LifecycleManager;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
@@ -15,6 +16,7 @@ import org.testng.internal.ClassHelper;
 
 import java.util.Properties;
 
+@Slf4j
 public class AutopilotSuiteListener implements ISuiteListener {
 
     private Injector injector;
@@ -32,30 +34,29 @@ public class AutopilotSuiteListener implements ISuiteListener {
             }
 
             val parentModule = (Module) parentModuleClass.getDeclaredConstructor().newInstance();
-            initInjectionContext(parentModule);
+            createInjector(parentModule);
 
         } else {
-            initInjectionContext(null);
+            createInjector(null);
         }
 
         suite.setParentInjector(injector);
     }
 
     @SneakyThrows
-    private void initInjectionContext(Module parentModule) {
+    private void createInjector(Module parentModule) {
+        var injectorBuilder = LifecycleInjector.builder();
+        val bootstrapModule = getBootstrapModule();
+
+        if (bootstrapModule != null) {
+            injectorBuilder.withBootstrapModule(bootstrapModule);
+        }
 
         if (parentModule != null) {
-            injector = LifecycleInjector.builder()
-                    .withBootstrapModule(getBootstrapModule())
-                    .withModules(parentModule)
-                    .build()
-                    .createInjector();
-        } else {
-            injector = LifecycleInjector.builder()
-                    .withBootstrapModule(getBootstrapModule())
-                    .build()
-                    .createInjector();
+            injectorBuilder.withModules(parentModule);
         }
+
+        injector = injectorBuilder.build().createInjector();
 
         lifecycleManager = injector.getInstance(LifecycleManager.class);
         lifecycleManager.start();
@@ -63,10 +64,19 @@ public class AutopilotSuiteListener implements ISuiteListener {
 
     @SneakyThrows
     private BootstrapModule getBootstrapModule() {
-        val props = new Properties();
-        props.load(AutopilotSuiteListener.class.getResourceAsStream("/environment.properties"));
-        val configProvider = new PropertiesConfigurationProvider(props);
-        return binder -> binder.bindConfigurationProvider().toInstance(configProvider);
+        BootstrapModule bm = null;
+        val inputStream = AutopilotSuiteListener.class.getResourceAsStream("/environment.properties");
+
+        if (inputStream != null) {
+            val props = new Properties();
+            props.load(inputStream);
+            val configProvider = new PropertiesConfigurationProvider(props);
+            bm = binder -> binder.bindConfigurationProvider().toInstance(configProvider);
+        } else {
+            log.warn("The environment.properties file is not found. Injector is going to be created without BootstrapModule.");
+        }
+
+        return bm;
     }
 
     @Override
