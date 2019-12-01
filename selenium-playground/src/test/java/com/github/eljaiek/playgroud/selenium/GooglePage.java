@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.netflix.governator.annotations.Configuration;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 public class GooglePage {
 
@@ -21,9 +20,6 @@ public class GooglePage {
     private GoogleSearchResult searchResult;
 
     @Inject
-    private Actions actions;
-
-    @Inject
     private JavascriptExecutor jsExecutor;
 
     @Inject
@@ -35,12 +31,16 @@ public class GooglePage {
         driver.get(url);
     }
 
-    public GoogleSearchWidget getSearchWidget() {
-        return searchBox;
+    public void searchFor(String txt) {
+        searchBox.searchFor(txt);
     }
 
-    public GoogleSearchResult getResults() {
-        return searchResult;
+    public void displayResult() {
+        searchResult.displayResult();
+    }
+
+    public int getSearchResultCount() {
+        return searchResult.getCount();
     }
 
     public Object execute(String script) {

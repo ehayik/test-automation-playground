@@ -25,17 +25,17 @@ public class GooglePageTest {
     }
 
     @Test(dataProvider = "google-test")
-    public void testGoogleSearch(String txt, String color) throws InterruptedException {
+    public void testGoogleSearch(String txt, String color) {
+        //navigate to Google home page
         googlePage.goTo();
 
         //change the color of the google page
         googlePage.execute("document.body.style.backgroundColor='" + color + "';");
 
         //do search and show results
-        googlePage.getSearchWidget().searchFor(txt);
-        googlePage.getResults().displayResult();
-        assertThat(true).isTrue();
-
+        googlePage.searchFor(txt);
+        assertThat(googlePage.getSearchResultCount()).isNotZero();
+        googlePage.displayResult();
     }
 
     @DataProvider(name = "google-test")
