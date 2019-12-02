@@ -5,16 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.inject.Inject;
 
 @Slf4j
 @RequiredArgsConstructor
 public class Communication {
 
     private final boolean keepRecords;
-
-    @Inject
-    private Communicator communicator;
+    private final Communicator communicator;
 
     @PostConstruct
     public void init() {
