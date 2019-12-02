@@ -1,2 +1,2 @@
-com.github.eljaiek.playgroud.guice.GovernatorInjectorSuiteListener
-com.github.eljaiek.playgroud.guice.GovernatorTestInjectionListener
+com.github.eljaiek.playground.guice.GovernatorInjectorSuiteListener
+com.github.eljaiek.playground.guice.GovernatorTestInjectionListener

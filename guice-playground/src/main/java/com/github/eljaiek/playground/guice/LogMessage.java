@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.playground.guice;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.playground.guice;
 
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.playground.guice;
 
 import lombok.extern.slf4j.Slf4j;
 
