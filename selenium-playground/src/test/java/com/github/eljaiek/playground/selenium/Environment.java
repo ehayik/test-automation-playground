@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.selenium;
+package com.github.eljaiek.playground.selenium;
 
 import com.netflix.governator.annotations.Configuration;
 import lombok.Getter;

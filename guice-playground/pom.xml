@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.eljaiek.playgroud</groupId>
+        <groupId>com.github.eljaiek.playground</groupId>
         <artifactId>test-automation-parent</artifactId>
         <version>${revision}</version>
         <relativePath>../test-automation-parent</relativePath>
@@ -28,7 +28,7 @@
 
         <!--testing -->
         <dependency>
-            <groupId>com.github.eljaiek.playgroud</groupId>
+            <groupId>com.github.eljaiek.playground</groupId>
             <artifactId>autopilot-testng-runner</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

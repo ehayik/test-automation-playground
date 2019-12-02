@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.guice;
+package com.github.eljaiek.playground.guice;
 
 import com.github.eljaiek.autopilot.testng.AutopilotTest;
 import org.assertj.core.api.Assertions;
