@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.selenium;
+package com.github.eljaiek.playground.selenium;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;

@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.selenium;
+package com.github.eljaiek.playground.selenium;
 
 import com.github.eljaiek.autopilot.testng.AutopilotTest;
 import lombok.extern.slf4j.Slf4j;

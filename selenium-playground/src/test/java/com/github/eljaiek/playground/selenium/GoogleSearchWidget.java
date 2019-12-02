@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.selenium;
+package com.github.eljaiek.playground.selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

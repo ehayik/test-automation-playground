@@ -1,4 +1,4 @@
-package com.github.eljaiek.playgroud.selenium;
+package com.github.eljaiek.playground.selenium;
 
 import com.google.inject.Inject;
 import com.netflix.governator.annotations.Configuration;

@@ -6,10 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>test-automation-playground</artifactId>
-        <groupId>com.github.eljaiek.playgroud</groupId>
+        <groupId>com.github.eljaiek.playground</groupId>
+        <artifactId>test-automation-playground</artifactId>        
         <!--parent version must be specified manually due to an issue with flatten-maven-plugin-->
-        <version>1.0.0.M1</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>test-automation-dependencies</artifactId>
