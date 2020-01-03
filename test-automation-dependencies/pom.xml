@@ -27,9 +27,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
+                <groupId>com.github.eljaiek.autopilot</groupId>
+                <artifactId>autopilot-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
@@ -48,13 +50,6 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>28.0-jre</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.10</version>
-                <scope>provided</scope>
             </dependency>
 
             <dependency>
@@ -149,26 +144,6 @@
                 <groupId>io.github.bonigarcia</groupId>
                 <artifactId>webdrivermanager</artifactId>
                 <version>3.7.1</version>
-            </dependency>
-
-            <!--testng-->
-            <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>7.0.0</version>
-            </dependency>
-
-            <!--dependency injection-->
-            <dependency>
-                <groupId>com.google.inject</groupId>
-                <artifactId>guice</artifactId>
-                <version>4.2.2</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.netflix.governator</groupId>
-                <artifactId>governator</artifactId>
-                <version>1.17.9</version>
             </dependency>
 
             <dependency>

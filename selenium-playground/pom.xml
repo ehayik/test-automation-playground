@@ -14,10 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.eljaiek.playground</groupId>
+            <groupId>com.github.eljaiek.autopilot</groupId>
             <artifactId>autopilot-testng-runner</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
